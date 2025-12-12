@@ -75,6 +75,9 @@
             padding: 30px;
             margin-bottom: 40px;
             position: relative;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
         }
         
         .bio-section::before {
@@ -86,6 +89,25 @@
             padding: 0 10px;
             color: #666;
             font-size: 12px;
+        }
+        
+        .profile-photo {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #333;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .bio-content {
+            flex: 1;
         }
         
         .bio-text {
@@ -110,6 +132,78 @@
             margin: 20px 0;
             color: #999;
             font-style: italic;
+        }
+        
+        .experience-section {
+            background: rgba(0, 255, 0, 0.05);
+            border: 2px solid #00ff00;
+            padding: 30px;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .experience-section::before {
+            content: "⚡ ПРОФЕССИОНАЛЬНЫЙ ОПЫТ";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #1a1a1a;
+            padding: 0 15px;
+            color: #00ff00;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .experience-section h3 {
+            color: #00ff00;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .experience-section p {
+            color: #ccc;
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .experience-card {
+            background: #0a0a0a;
+            border: 1px solid #00ff00;
+            padding: 20px;
+        }
+        
+        .experience-card h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .experience-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .experience-card li {
+            color: #999;
+            font-size: 13px;
+            margin: 8px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .experience-card li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #00ff00;
         }
         
         .stats-row {
@@ -207,6 +301,104 @@
         .section-title::before {
             content: "// ";
             color: #666;
+        }
+        
+        /* КАРУСЕЛЬ СКРИНШОТОВ */
+        .screenshots-carousel {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            padding: 30px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .screenshots-carousel::before {
+            content: "// скриншоты статистики";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #1a1a1a;
+            padding: 0 10px;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-slide {
+            flex: 0 0 300px;
+            height: 500px;
+            background: #000;
+            border: 2px solid #333;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .carousel-slide:hover {
+            border-color: #00ff00;
+            transform: scale(1.02);
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .carousel-btn {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            color: #00ff00;
+            padding: 10px 30px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .carousel-btn:hover {
+            border-color: #00ff00;
+            background: rgba(0, 255, 0, 0.1);
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #333;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .dot.active {
+            background: #00ff00;
+            transform: scale(1.3);
         }
         
         .yandex-section {
@@ -347,9 +539,6 @@
             border: 1px solid #333;
             padding: 20px;
             transition: all 0.2s;
-            text-decoration: none;
-            display: block;
-            color: inherit;
         }
         
         .case-item:hover {
@@ -440,7 +629,16 @@
         }
         
         @media (max-width: 768px) {
-            .metrics-grid, .case-grid {
+            .bio-section {
+                flex-direction: column;
+            }
+            
+            .profile-photo {
+                width: 100%;
+                height: 250px;
+            }
+            
+            .metrics-grid, .case-grid, .experience-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -450,6 +648,10 @@
             
             .stat-item {
                 margin: 10px 0;
+            }
+            
+            .carousel-slide {
+                flex: 0 0 250px;
             }
         }
     </style>
@@ -467,19 +669,72 @@
         <p class="tagline">Техноблогер по электронике и умным гаджетам</p>
 
         <div class="bio-section">
-            <p class="bio-text">
-                <strong>15+ лет в маркетинге</strong> + страсть к электронике = контент, который продаёт. 
-            </p>
-            <p class="bio-text">
-                Показываю не просто "как включить", а <strong>как решить реальную проблему</strong> с помощью гаджета. 
-                Аудитория покупает, потому что видит себя в моих сценариях.
-            </p>
-            <div class="quote-block">
-                "Строю гаджеты. Иногда ломаю. Потом делаю вид, что так и было задумано."
+            <div class="profile-photo">
+                <img src="profile.jpg" alt="Igor Fedorov">
             </div>
-            <p class="bio-text">
-                <strong>Результаты за полгода:</strong> <span class="highlight-text">YouTube вырос до 34К</span>, 
-                <span class="highlight-text">Instagram до 33К</span>, видео стабильно набирают 100К+ просмотров.
+            <div class="bio-content">
+                <p class="bio-text">
+                    <strong>С детства мои любимые игрушки</strong> — провода и сломанная техника, которую приносил отец с работы. 
+                    Пока другие дети играли в машинки, я разбирал радиоприемники и пытался понять, почему эта штука говорит.
+                </p>
+                <p class="bio-text">
+                    <strong>В 20 лет открыл бизнес</strong> по ремонту компьютеров. Собрал сотни ПК, починил тысячи устройств. 
+                    Понял главное — людям нужны не характеристики, а решения.
+                </p>
+                <p class="bio-text">
+                    <strong>Последние полгода</strong> совмещаю 17-летний опыт в маркетинге с любовью к электронике. 
+                    Результат: <span class="highlight-text">YouTube вырос до 34К</span>, 
+                    <span class="highlight-text">Instagram до 33К</span>, видео набирают сотни тысяч просмотров.
+                </p>
+                <div class="quote-block">
+                    "Строю гаджеты. Иногда ломаю. Потом делаю вид, что так и было задумано."
+                </div>
+            </div>
+        </div>
+
+        <!-- ПРОФЕССИОНАЛЬНЫЙ ОПЫТ -->
+        <div class="experience-section">
+            <h3>📊 Маркетолог и продюсер контента с 2008 года</h3>
+            <p>
+                <strong>17 лет профессионального опыта</strong> в создании контента и продвижении брендов. 
+                Начинал с MySpace, создал и вёл бизнес-канал, запустил собственное маркетинговое и рекламное агентство.
+            </p>
+            
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h4>Крупные клиенты</h4>
+                    <ul>
+                        <li>Сбербанк (реклама в TikTok)</li>
+                        <li>amoCRM</li>
+                        <li>Лаборатория Касперского</li>
+                        <li>И другие крупные бренды</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-card">
+                    <h4>Собственные проекты</h4>
+                    <ul>
+                        <li>Маркетинговое агентство</li>
+                        <li>Рекламное агентство</li>
+                        <li>Бизнес-канал</li>
+                        <li>Техноблог с 67K аудиторией</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-card">
+                    <h4>Экспертиза</h4>
+                    <ul>
+                        <li>Продюсирование контента</li>
+                        <li>Вирусный маркетинг</li>
+                        <li>Социальные сети (2008→2025)</li>
+                        <li>Performance-маркетинг</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px;">
+                <strong>Понимаю механики продаж через контент</strong> — от концепции до конверсии. 
+                Знаю, как упаковать продукт так, чтобы аудитория не просто посмотрела, а купила.
             </p>
         </div>
 
@@ -489,7 +744,7 @@
                 <span class="stat-label">общая аудитория</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">800K</span>
+                <span class="stat-number">987K</span>
                 <span class="stat-label">макс. просмотров</span>
             </div>
             <div class="stat-item">
@@ -497,8 +752,8 @@
                 <span class="stat-label">средний досмотр</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">50+</span>
-                <span class="stat-label">"где купить?" в каждом видео</span>
+                <span class="stat-number">17 лет</span>
+                <span class="stat-label">в маркетинге</span>
             </div>
         </div>
 
@@ -516,7 +771,7 @@
                 <div class="platform-name">Instagram</div>
                 <div class="metric-item">Подписчики: <span class="metric-value">33,000</span></div>
                 <div class="metric-item">За 30 дней: <span class="metric-value">689К просмотров</span></div>
-                <div class="metric-item">Топ Reels: <span class="metric-value">899К просмотров</span></div>
+                <div class="metric-item">Топ Reels: <span class="metric-value">987К просмотров</span></div>
                 <div class="metric-item">Рост: <span class="metric-value">+2,500/месяц</span></div>
                 <a href="https://www.instagram.com/igor.fedorov" target="_blank" class="platform-link">→ Перейти в профиль</a>
             </div>
@@ -528,6 +783,72 @@
                 <div class="metric-item">Лайки: <span class="metric-value">32К всего</span></div>
                 <div class="metric-item">Рост: <span class="metric-value">Новый аккаунт, активный рост</span></div>
                 <a href="https://www.tiktok.com/@igortechminimal" target="_blank" class="platform-link">→ Перейти в профиль</a>
+            </div>
+        </div>
+
+        <!-- КАРУСЕЛЬ СКРИНШОТОВ -->
+        <div class="screenshots-carousel">
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <img src="screen1.jpg" alt="Статистика 1" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:#666;text-align:center;padding:20px;\'>screen1.jpg<br>300x500</div>'">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screen2.jpg" alt="Статистика 2" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:#666;text-align:center;padding:20px;\'>screen2.jpg<br>300x500</div>'">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screen3.jpg" alt="Статистика 3" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:#666;text-align:center;padding:20px;\'>screen3.jpg<br>300x500</div>'">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screen4.jpg" alt="Статистика 4" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:#666;text-align:center;padding:20px;\'>screen4.jpg<br>300x500</div>'">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screen5.jpg" alt="Статистика 5" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:#666;text-align:center;padding:20px;\'>screen5.jpg<br>300x500</div>'">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="carousel-btn" onclick="moveCarousel(-1)">← Назад</button>
+                <button class="carousel-btn" onclick="moveCarousel(1)">Вперёд →</button>
+            </div>
+            
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Топовый контент (примеры вирусных видео)</h2>
+            <div class="case-grid">
+                <div class="case-item">
+                    <div class="case-number">987К</div>
+                    <div class="case-title">Портативный SSD-брелок</div>
+                    <div class="case-platform">Instagram Reels</div>
+                </div>
+                <div class="case-item">
+                    <div class="case-number">850К</div>
+                    <div class="case-title">Гаджеты на столе</div>
+                    <div class="case-platform">Instagram Reels</div>
+                </div>
+                <div class="case-item">
+                    <div class="case-number">300К</div>
+                    <div class="case-title">Рекламный ролик 3D принтера</div>
+                    <div class="case-platform">YouTube</div>
+                </div>
+                <div class="case-item">
+                    <div class="case-number">170К</div>
+                    <div class="case-title">Окупаемость 3D принтера</div>
+                    <div class="case-platform">Instagram</div>
+                </div>
+                <div class="case-item">
+                    <div class="case-number">100К+</div>
+                    <div class="case-title">Распаковки электроники</div>
+                    <div class="case-platform">Instagram/YouTube</div>
+                </div>
+                <div class="case-item">
+                    <div class="case-number">30К</div>
+                    <div class="case-title">Электронный брелок с экраном</div>
+                    <div class="case-platform">Instagram</div>
+                </div>
             </div>
         </div>
 
@@ -677,49 +998,15 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Топовый контент (примеры вирусных видео)</h2>
-            <div class="case-grid">
-                <div class="case-item">
-                    <div class="case-number">899К</div>
-                    <div class="case-title">Портативный SSD-брелок</div>
-                    <div class="case-platform">Instagram Reels</div>
-                </div>
-                <div class="case-item">
-                    <div class="case-number">835К</div>
-                    <div class="case-title">Девайсы рабочего стола</div>
-                    <div class="case-platform">Instagram Reels</div>
-                </div>
-                <div class="case-item">
-                    <div class="case-number">470К</div>
-                    <div class="case-title">Китайская нейронка vs США</div>
-                    <div class="case-platform">YouTube Shorts</div>
-                </div>
-                <div class="case-item">
-                    <div class="case-number">333К</div>
-                    <div class="case-title">CardPuter мини-терминал</div>
-                    <div class="case-platform">Instagram Reels</div>
-                </div>
-                <div class="case-item">
-                    <div class="case-number">200К</div>
-                    <div class="case-title">Рекламное видео</div>
-                    <div class="case-platform">YouTube</div>
-                </div>
-                <div class="case-item">
-                    <div class="case-number">100К+</div>
-                    <div class="case-title">Кнопки для клавиатуры</div>
-                    <div class="case-platform">Instagram</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
             <h2 class="section-title">Почему аудитория покупает после моих обзоров</h2>
             <ul class="achievement-list">
+                <li><strong>17 лет опыта в маркетинге</strong> — знаю механики продаж через контент</li>
                 <li><strong>Показываю реальные проблемы</strong> — не "распаковка", а решение боли аудитории</li>
                 <li><strong>Профессиональная съёмка</strong> — Sony камера, крупные планы, динамичный монтаж</li>
                 <li><strong>Честные тесты</strong> — если что-то плохо, скажу прямо. Аудитория доверяет</li>
                 <li><strong>Практические сценарии</strong> — люди видят себя в моих видео</li>
                 <li><strong>Высокая конверсия</strong> — 50+ комментариев "где купить?" под каждым видео</li>
+                <li><strong>Опыт с крупными брендами</strong> — Сбербанк, amoCRM, Касперский</li>
             </ul>
         </div>
 
@@ -737,5 +1024,52 @@
             </p>
         </div>
     </div>
+
+    <script>
+        // Карусель
+        let currentSlide = 0;
+        const totalSlides = 5;
+        
+        function initCarousel() {
+            const dotsContainer = document.getElementById('carouselDots');
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+        
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+        
+        function updateCarousel() {
+            const track = document.getElementById('carouselTrack');
+            const offset = -currentSlide * 320; // 300px width + 20px gap
+            track.style.transform = `translateX(${offset}px)`;
+            
+            // Update dots
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        // Auto-play карусели
+        setInterval(() => {
+            moveCarousel(1);
+        }, 5000);
+        
+        initCarousel();
+    </script>
 </body>
 </html>
